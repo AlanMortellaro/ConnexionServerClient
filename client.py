@@ -9,7 +9,7 @@ def cmdrecv():
 
 def sendconfirm():
     if valueCmd == 'ping':
-        server_co.send("pong")
+        server_co.send(b'pong')
     else:
         server_co.send(b'Command recieved successfully')
 
