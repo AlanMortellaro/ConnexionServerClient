@@ -9,7 +9,7 @@ def cmdrecv():
 
 def sendconfirm():
     if valueCmd == 'ping':
-        server_co.send(os.system("ipconfig"))
+        server_co.send("pong")
     else:
         server_co.send(b'Command recieved successfully')
 
@@ -21,8 +21,7 @@ print("[*] Connected")
 msg = b''
 while msg != b'stop':
     valueCmd = cmdrecv()
-    value = sendconfirm()
+    sendconfirm()
     print(valueCmd)
-    print(value)
 print("[*] Session Close")
 server_co.close()
