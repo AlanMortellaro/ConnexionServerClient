@@ -1,12 +1,17 @@
 import socket
+import os
 
+ok = ''
 def cmdrecv():
     cmd = server_co.recv(1024)
     cmd = cmd.decode()
-    print(cmd)
+    return cmd
 
 def sendconfirm():
-    server_co.send(b'Command recieved successfully')
+    if valueCmd == 'ping':
+        server_co.send(b'pong')
+    else:
+        server_co.send(b'Command recieved successfully')
 
 hote = 'localhost'
 port = 25565
@@ -15,7 +20,8 @@ server_co.connect((hote, port))
 print("[*] Connected")
 msg = b''
 while msg != b'stop':
-    cmdrecv()
+    valueCmd = cmdrecv()
     sendconfirm()
+    print(valueCmd)
 print("[*] Session Close")
 server_co.close()

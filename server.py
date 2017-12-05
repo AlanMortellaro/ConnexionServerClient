@@ -1,4 +1,5 @@
 import socket
+import os
 
 hote = ''
 port = 25565
