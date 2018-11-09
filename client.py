@@ -7,9 +7,17 @@ def cmdrecv():
     cmd = cmd.decode()
     return cmd
 
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+
+ip = get_ip_address()
+ipEncode = message.encode()
+
 def sendconfirm():
     if valueCmd == 'ping':
-        server_co.send(b'pong')
+        server_co.send(ipEncode)
     else:
         server_co.send(b'Command recieved successfully')
 
